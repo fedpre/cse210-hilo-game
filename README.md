@@ -37,3 +37,5 @@ root                    (project root folder)
 ---
 * TODO: 
 David Carsin - dcarsin@byui.edu
+
+Federico Pregnolato - pre13009@byui.edu
