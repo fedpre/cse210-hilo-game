@@ -3,7 +3,7 @@ import random
 # TODO: Define the Thrower class here.
 
 class Turner:
-    """ The turner is the player of the game. The turner must throw five dices to play.
+    """ The turner is the player of the game. The turner must turn the card to play.
 
         Attributes:
             first_card (number): Random number between 1 and 13
@@ -24,7 +24,9 @@ class Turner:
 
 
     def get_points(self, guess):
-        """The get_points method calculates and returns the total points for the current guess. If the person guesses correctly, it will receive 100 points. If it guesses incorrectly, it will lose 75 points.
+        """The get_points method calculates and returns the total points for the current 
+        guess. If the person guesses correctly, it will receive 100 points. If it 
+        guesses incorrectly, it will lose 75 points.
         
         Args: 
             self (Turner): an instance of Turner
