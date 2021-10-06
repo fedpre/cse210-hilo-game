@@ -1,0 +1,3 @@
+
+
+turner_card(card)
