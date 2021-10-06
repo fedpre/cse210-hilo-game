@@ -45,7 +45,7 @@ class Director:
         guess = input('Make your guess. Will the next card be higher or lower? [h/l] ')
         points = self.turner.get_points(guess.lower())
         self.score += points
-        print(f"Here is the next card is: {self.turner.second_card}")
+        print(f"The next card was: {self.turner.second_card}")
         if points >= 100:
             print("Congratulations! You guessed correctly and earned 100 points")
         else:
