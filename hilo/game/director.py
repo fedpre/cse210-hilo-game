@@ -54,7 +54,11 @@ class Director:
 
         if self.score > 0:
             choice = input("Keep playing? [y/n] ")
-            self.keep_playing = (choice == "y")
+            if choice.lower() == "y":
+                self.keep_playing = (choice == "y")
+            else:
+                print(f"Thank you for playing! Your final score is: {self.score}")
+                self.keep_playing = False
         else:
             print(f"Thank you for playing! Your final score is: {self.score}")
             self.keep_playing = False
