@@ -30,7 +30,8 @@ class Director:
             self.do_outputs()
             
     #this will check the entered options and reject not allowed
-    def check_option(opt1, opt2, question):
+
+    def check_option(self, opt1, opt2, question):
       choice = "x"
       while choice != opt1 and choice != opt2:
           choice = input(f"{question} [{opt1}/{opt2}] ").lower()
@@ -46,17 +47,7 @@ class Director:
 
         print(f"\nThe card is: {self.turner.first_card}")
 
-        self.guess = check_option("h", "l", "Make your guess. Will the next card be higher or lower?")        
-
-      # Python program to print
-      # colored text and background    
-
-        self.guess = input('Make your guess. Will the next card be higher or lower? [h/l] ')
-
-      # Python program to print
-      # colored text and background
-    
-
+        self.guess = self.check_option("h", "l", "Make your guess. Will the next card be higher or lower?")        
 
     def do_outputs(self):
         """Outputs the important game information for each round of play. In
@@ -66,6 +57,7 @@ class Director:
             self (Director): An instance of Director."""
         points = self.turner.get_points(self.guess.lower())
         self.score += points
+        
         print(f"The next card was: {self.turner.second_card}")
 
         if points >= 100:
@@ -73,27 +65,12 @@ class Director:
 
         else:
             print("\x1b[31mOh no! Your guess is incorrect and you lose 75 points.\x1b[0m")
-        print(f"Your running score is: {self.score}")
-
-        else:
-            print("\x1b[31mOh no! Your guess is incorrect and you lose 75 points.\x1b[0m")
-        print(f"Your running score is: {self.score}")
+            
+        
+        print(f"Your current points are: {self.score}")
 
         if self.score > 0:
-            choice = input("Keep playing? [y/n] ")
-            if choice.lower() == "y":
-                self.keep_playing = (choice == "y")
-            else:
-                print()
-                print(f"Thank you for playing! Your final score is: {self.score} points")
-                self.keep_playing = False
-        else:
-            print(f"Thank you for playing! Your final score is: {self.score} points")
-            self.keep_playing = False
-
-
-        if self.score > 0:
-            choice = check_option("y", "n", "Keep playing?")
+            choice = self.check_option("y", "n", "Keep playing?")
             if choice == "y":
                 self.keep_playing = True
 
