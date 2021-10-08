@@ -34,10 +34,23 @@ class Turner:
         """
         second_card = self.turn_card()
 
+
         if (second_card > self.first_card and guess == 'h') or (second_card < self.first_card and guess == 'l'):
             self.points = 100
         else:
             self.points = -75
+
+        if second_card > self.first_card and guess == 'h':
+            self.points = 100
+        elif second_card < self.first_card and guess == 'h':
+            self.points = -75
+        elif second_card > self.first_card and guess == 'l':
+            self.points = -75
+        elif second_card < self.first_card and guess == 'l':
+            self.points = 100
+        else:
+            self.points = 0
+
         
         self.first_card = self.second_card
         return self.points
