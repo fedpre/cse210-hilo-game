@@ -1,7 +1,5 @@
 from game.turner import Turner
 
-
-
 class Director:
     """A code template for a person who directs the game. The responsibility of
     this class of objects is to keep track of the score and control the
@@ -30,7 +28,16 @@ class Director:
         while self.keep_playing:
             self.get_inputs()
             self.do_outputs()
-
+            
+    #this will check the entered options and reject not allowed
+    def check_option(opt1, opt2, question):
+      choice = "x"
+      while choice != opt1 and choice != opt2:
+          choice = input(f"{question} [{opt1}/{opt2}] ").lower()
+          if choice != opt1 and choice != opt2:
+              print(f"{choice} is not allowed, try again...")
+      return choice
+    
     def get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means asking for the guess to the user.
@@ -38,11 +45,18 @@ class Director:
             self (Director): An instance of Director."""
 
         print(f"\nThe card is: {self.turner.first_card}")
+
+        self.guess = check_option("h", "l", "Make your guess. Will the next card be higher or lower?")        
+
+      # Python program to print
+      # colored text and background    
+
         self.guess = input('Make your guess. Will the next card be higher or lower? [h/l] ')
 
-    # Python program to print
-    # colored text and background
+      # Python program to print
+      # colored text and background
     
+
 
     def do_outputs(self):
         """Outputs the important game information for each round of play. In
@@ -56,6 +70,11 @@ class Director:
 
         if points >= 100:
             print("\x1b[32mCongratulations! You guessed correctly and earned 100 points\x1b[0m")
+
+        else:
+            print("\x1b[31mOh no! Your guess is incorrect and you lose 75 points.\x1b[0m")
+        print(f"Your running score is: {self.score}")
+
         else:
             print("\x1b[31mOh no! Your guess is incorrect and you lose 75 points.\x1b[0m")
         print(f"Your running score is: {self.score}")
@@ -73,6 +92,14 @@ class Director:
             self.keep_playing = False
 
 
+        if self.score > 0:
+            choice = check_option("y", "n", "Keep playing?")
+            if choice == "y":
+                self.keep_playing = True
+
+        if self.score < 0 or choice == "n":
+            print(f"\nThank you for playing! Your final score is: {self.score} points")
+            self.keep_playing = False
 
 
 
