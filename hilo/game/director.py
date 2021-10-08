@@ -19,6 +19,7 @@ class Director:
         self.keep_playing = True
         self.score = 300
         self.turner = Turner()
+        self.guess = ""
 
 
     def start_game(self):
@@ -32,10 +33,12 @@ class Director:
 
     def get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
-        that means turning the card.
+        that means asking for the guess to the user.
         Args:
             self (Director): An instance of Director."""
-        pass
+
+        print(f"\nThe card is: {self.turner.first_card}")
+        self.guess = input('Make your guess. Will the next card be higher or lower? [h/l] ')
 
     # Python program to print
     # colored text and background
@@ -47,10 +50,7 @@ class Director:
         (see color)
         Args:
             self (Director): An instance of Director."""
-
-        print(f"\nThe card is: {self.turner.first_card}")
-        guess = input('Make your guess. Will the next card be higher or lower? [h/l] ')
-        points = self.turner.get_points(guess.lower())
+        points = self.turner.get_points(self.guess.lower())
         self.score += points
         print(f"The next card was: {self.turner.second_card}")
 
@@ -66,10 +66,10 @@ class Director:
                 self.keep_playing = (choice == "y")
             else:
                 print()
-                print(f"Thank you for playing! Your final score is: {self.score}")
+                print(f"Thank you for playing! Your final score is: {self.score} points")
                 self.keep_playing = False
         else:
-            print(f"Thank you for playing! Your final score is: {self.score}")
+            print(f"Thank you for playing! Your final score is: {self.score} points")
             self.keep_playing = False
 
 
