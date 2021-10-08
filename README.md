@@ -39,3 +39,5 @@ root                    (project root folder)
 David Carsin - dcarsin@byui.edu
 Tamara Meisman - tamara@meisman.us
 Federico Pregnolato - pre13009@byui.edu
+Yamil Claure - cla21028@byui.edu
+Brian Lewis - 1808ub@gmail.com
